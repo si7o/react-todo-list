@@ -1,9 +1,9 @@
 import React, {useState}  from 'react'
 
 import Header from '../header/Header'
-import TodoSummary from '../todo-summary/TodoSummary'
-import TodoAdd from '../todo-add/TodoAdd'
-import TodoList from '../todo-list/TodoList'
+import TodoSummary from './components/todo-summary/TodoSummary'
+import TodoAdd from './components/todo-add/TodoAdd'
+import TodoList from './components/todo-list/TodoList'
 
 export default function Todos({logoImage}) {
     // state
