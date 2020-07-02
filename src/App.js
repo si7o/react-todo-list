@@ -9,7 +9,7 @@ import TodoAdd from './components/todo-add/TodoAdd';
 import TodoList from './components/todo-list/TodoList';
 
 function App() {
-  
+
   const [todoItems, setTodoItems] = useState([
     {
       text:"Improve the application", 
@@ -31,7 +31,7 @@ function App() {
         addTodoHandler={addTodo}/>
       <TodoList 
         items={todoItems} 
-        completeTodoHandler={completeTodo}
+        toggleTodoHandler={toggleTodo}
         removeTodoHandler={removeTodo}/>
     </div>
   )
@@ -48,17 +48,16 @@ function App() {
     setTodoItems(newTodoItems)    
   }
    
-  function completeTodo(todoIndex) {
-    console.log(`complete todo "${todoIndex}"`);
+  function toggleTodo(todoIndex) {
+    console.log(`toggle todo "${todoIndex}"`);
     const newTodoItems = todoItems.slice()
-    todoItems[todoIndex].done=true
+    todoItems[todoIndex].done= !todoItems[todoIndex].done
 
     setTodoItems(newTodoItems)
   }
 
   function removeTodo(todoText) {
-    console.log(`remove todo "${todoText}"`);
-    
+    console.log(`remove todo "${todoText}"`);    
     const newTodoItems = todoItems.filter((todo) => todo.text!==todoText)   
     
     setTodoItems(newTodoItems)
