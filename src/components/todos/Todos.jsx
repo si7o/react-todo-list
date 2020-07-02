@@ -5,7 +5,7 @@ import TodoSummary from './components/todo-summary/TodoSummary'
 import TodoAdd from './components/todo-add/TodoAdd'
 import TodoList from './components/todo-list/TodoList'
 
-const todoDataUrl = process.env.PUBLIC_URL + './data/todos.json'
+const todoDataUrl = process.env.PUBLIC_URL + '/data/todos.json'
 
 export default function Todos({logoImage}) {
     // state
