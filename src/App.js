@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
 import './App.css';
 import logo from './logo.svg'
@@ -8,78 +8,60 @@ import TodoSummary from './components/todo-summary/TodoSummary';
 import TodoAdd from './components/todo-add/TodoAdd';
 import TodoList from './components/todo-list/TodoList';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
+function App() {
   
-    this.state = {
-      todoItems: [
-        {
-          text:"Improve the application", 
-          done: false
-        },
-        {
-          text:"Have breakfast", 
-          done: true
-        },
-      ]
-    }
+  const [todoItems, setTodoItems] = useState([
+    {
+      text:"Improve the application", 
+      done: false
+    },
+    {
+      text:"Have breakfast", 
+      done: true
+    },
+  ])
+  
+  return (
+    <div className="App">
+      <Header title="Todo list" logoImage={logo}/>
+      <TodoSummary 
+        todoList={todoItems} />
+      <TodoAdd 
+        todoList={todoItems} 
+        addTodoHandler={addTodo}/>
+      <TodoList 
+        items={todoItems} 
+        completeTodoHandler={completeTodo}
+        removeTodoHandler={removeTodo}/>
+    </div>
+  )
 
-    this.addTodo = this.addTodo.bind(this)
-    this.completeTodo = this.completeTodo.bind(this)
-    this.removeTodo = this.removeTodo.bind(this)
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Header title="Todo list" logoImage={logo}/>
-        <TodoSummary 
-          todoList={this.state.todoItems} />
-        <TodoAdd 
-          todoList={this.state.todoItems} 
-          addTodoHandler={this.addTodo}/>
-        <TodoList 
-          items={this.state.todoItems} 
-          completeTodoHandler={this.completeTodo}
-          removeTodoHandler={this.removeTodo}/>
-      </div>
-    )
-  }
-
-  addTodo(todoText) {
+  function addTodo(todoText) {
     console.log(`add todo "${todoText}"`);
     const todo = {
       text: todoText,
       done: false,
     }
 
-    const todoItems = this.state.todoItems.slice().concat(todo)
-
-    this.setState(
-      {todoItems: todoItems}
-    )
+    const newTodoItems = todoItems.slice().concat(todo)
     
+    setTodoItems(newTodoItems)    
   }
    
-  completeTodo(todoIndex) {
+  function completeTodo(todoIndex) {
     console.log(`complete todo "${todoIndex}"`);
-    const todoItems = this.state.todoItems.slice()
+    const newTodoItems = todoItems.slice()
     todoItems[todoIndex].done=true
 
-    this.setState(
-      {todoItems: todoItems}
-    )
+    setTodoItems(newTodoItems)
   }
 
-  removeTodo(todoText) {
+  function removeTodo(todoText) {
     console.log(`remove todo "${todoText}"`);
     
-    const todoItems = this.state.todoItems.filter((todo) => todo.text!==todoText)   
+    const newTodoItems = todoItems.filter((todo) => todo.text!==todoText)   
     
-    this.setState(
-      {todoItems: todoItems}
-    )
+    setTodoItems(newTodoItems)
   }
 }
 
