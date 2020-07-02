@@ -2,4 +2,8 @@
     input {
         margin-right: 5px;
     }
+
+    button:disabled {
+        cursor: not-allowed;
+    }
 }
