@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function TodoAdd({addTodoHandler}) {
-    let newTodo
+    const [todoText, setTodoText] = useState('')
 
     function handleTodoTextChange(event) {
-        newTodo = event.target.value
+        setTodoText(event.target.value)
+    }
+
+    function addTodoClick() {
+        addTodoHandler(todoText)        
+        setTodoText('')
     }
 
     return (
@@ -12,9 +17,9 @@ export default function TodoAdd({addTodoHandler}) {
             <input 
                 type="text"
                 placeholder="type todo text here" 
-                value={newTodo} 
+                value={todoText} 
                 onChange={handleTodoTextChange}/>
-            <button onClick={() => addTodoHandler(newTodo)}>
+            <button onClick={addTodoClick}>
                 Add todo
             </button>
         </div>
