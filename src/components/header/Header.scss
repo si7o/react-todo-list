@@ -14,18 +14,42 @@ header {
     pointer-events: none;
   }
 
+  .title {
+    margin-bottom: 10px;
+  }
+
+  span.loading {
+    font-size: small;
+    animation: fadeOut infinite 0.5s ease-in-out;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .logo {
-      animation: logo-spin infinite 20s linear;
+      animation: spin infinite 20s linear;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .logo.loading {
+      animation: spin infinite 1s ease-in-out;
     }
   }
 }
 
-@keyframes logo-spin {
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

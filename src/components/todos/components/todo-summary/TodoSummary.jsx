@@ -2,8 +2,8 @@ import React from 'react'
 import './TodoSummary.scss'
 
 export default function TodoSummary({todoList}) {
-    const pendigTodos = todoList.filter((todo) => todo.done === false).length;
-    const doneTodos = todoList.filter((todo) => todo.done === true).length;
+    const pendigTodos = todoList?.filter((todo) => todo.done === false).length;
+    const doneTodos = todoList?.filter((todo) => todo.done === true).length;
 
     return (
         <div className="todo-summary">

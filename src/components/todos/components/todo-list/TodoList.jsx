@@ -5,7 +5,7 @@ import './TodoList.scss'
 
 export default function TodoList({items, toggleTodoHandler, removeTodoHandler}) {
 
-    const todoItemList = items.map((todo, index) => 
+    const todoItemList = items?.map((todo, index) => 
         <TodoItem 
             item={todo}
             key={index}

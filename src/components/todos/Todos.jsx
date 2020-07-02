@@ -1,22 +1,32 @@
-import React, {useState}  from 'react'
+import React, {useState, useEffect}  from 'react'
 
 import Header from '../header/Header'
 import TodoSummary from './components/todo-summary/TodoSummary'
 import TodoAdd from './components/todo-add/TodoAdd'
 import TodoList from './components/todo-list/TodoList'
 
+const todoDataUrl = '/data/todos.json'
+
 export default function Todos({logoImage}) {
     // state
-    const [todoItems, setTodoItems] = useState([
-        {
-          text:"Improve the application", 
-          done: false
-        },
-        {
-          text:"Have breakfast", 
-          done: true
-        },
-    ])
+    const [todoItems, setTodoItems] = useState([])
+    const [loadedItems, setLoadedItems] = useState(false)
+
+    // fetch todos from file
+    useEffect(() => {
+        // delay the request so we can see the spinner :D
+        setTimeout( () => {
+            if (!loadedItems)
+                fetch(todoDataUrl)            
+                    .then((r) => r.json())
+                    .then((data) => {
+                        console.log('todo(s) loaded')
+                        
+                        setLoadedItems(true)
+                        setTodoItems(data)
+                    })
+        }, 1000)
+    })
 
     // event handlers
 
@@ -48,9 +58,10 @@ export default function Todos({logoImage}) {
     }
 
     // component
-    return (
+    return (        
         <div className="todos">
-            <Header title="Todo list" logoImage={logoImage}/>
+            <Header title="Todo list" logoImage={logoImage} isLoading={!loadedItems}/>
+
             <TodoSummary 
                 todoList={todoItems} />
             <TodoAdd 
@@ -59,7 +70,7 @@ export default function Todos({logoImage}) {
             <TodoList 
                 items={todoItems} 
                 toggleTodoHandler={toggleTodo}
-                removeTodoHandler={removeTodo}/>
+                removeTodoHandler={removeTodo}/>                
         </div>
     )    
 }
