@@ -27,7 +27,7 @@ export default function TodoAdd({addTodoHandler}) {
                 value={todoText} 
                 onChange={handleTodoTextChange}
                 onKeyPress={handleKeyDown}/>
-            <button onClick={addTodoClick}>
+            <button onClick={addTodoClick} disabled={todoText.length===0}>
                 Add todo
             </button>
         </div>
