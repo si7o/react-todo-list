@@ -1,0 +1,12 @@
+.todo-summary{
+    margin-bottom: 15px;
+
+    .pending span{
+        font-weight: bold;
+    }
+
+    .completed span{
+        font-weight: bold;
+        color: green;
+    }
+}

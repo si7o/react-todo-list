@@ -1,4 +1,5 @@
 import React from 'react'
+import './TodoItem.scss'
 
 export default function TodoItem({item, index, toggleTodoHandler, removeTodoHandler}) {
 

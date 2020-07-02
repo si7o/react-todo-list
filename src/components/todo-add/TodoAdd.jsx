@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './TodoAdd.scss'
 
 export default function TodoAdd({addTodoHandler}) {
     const [todoText, setTodoText] = useState('')
@@ -7,18 +8,25 @@ export default function TodoAdd({addTodoHandler}) {
         setTodoText(event.target.value)
     }
 
+    function handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            addTodoClick()
+        }
+    } 
+
     function addTodoClick() {
         addTodoHandler(todoText)        
         setTodoText('')
     }
 
     return (
-        <div>
+        <div className="todo-add">
             <input 
                 type="text"
                 placeholder="type todo text here" 
                 value={todoText} 
-                onChange={handleTodoTextChange}/>
+                onChange={handleTodoTextChange}
+                onKeyPress={handleKeyDown}/>
             <button onClick={addTodoClick}>
                 Add todo
             </button>

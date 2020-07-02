@@ -1,6 +1,8 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
+import './TodoList.scss'
+
 export default function TodoList({items, toggleTodoHandler, removeTodoHandler}) {
 
     const todoItemList = items.map((todo, index) => 
@@ -13,7 +15,7 @@ export default function TodoList({items, toggleTodoHandler, removeTodoHandler}) 
     )
 
     return (
-        <ul>
+        <ul className="todo-list">
             {todoItemList}
         </ul>
     )
