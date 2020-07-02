@@ -1,5 +1,7 @@
 This is a test project bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+See it working [here](https://si7o.github.io/react-todo-list/)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -26,6 +28,11 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn deploy`
+
+Builds and deploys the project to https://si7o.github.io/react-todo-list/
+Requires gh-pages installed [+info](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
 
 ### `yarn eject`
 
