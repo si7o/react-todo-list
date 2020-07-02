@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/si7o/react-todo-list/static/css/main.dfcef5ce.chunk.css",
-    "main.js": "/si7o/react-todo-list/static/js/main.036db0f8.chunk.js",
-    "main.js.map": "/si7o/react-todo-list/static/js/main.036db0f8.chunk.js.map",
-    "runtime-main.js": "/si7o/react-todo-list/static/js/runtime-main.f677baaf.js",
-    "runtime-main.js.map": "/si7o/react-todo-list/static/js/runtime-main.f677baaf.js.map",
-    "static/js/2.3c214f1a.chunk.js": "/si7o/react-todo-list/static/js/2.3c214f1a.chunk.js",
-    "static/js/2.3c214f1a.chunk.js.map": "/si7o/react-todo-list/static/js/2.3c214f1a.chunk.js.map",
-    "index.html": "/si7o/react-todo-list/index.html",
-    "precache-manifest.76a8442d6fca553062a348e6e1d958e7.js": "/si7o/react-todo-list/precache-manifest.76a8442d6fca553062a348e6e1d958e7.js",
-    "service-worker.js": "/si7o/react-todo-list/service-worker.js",
-    "static/css/main.dfcef5ce.chunk.css.map": "/si7o/react-todo-list/static/css/main.dfcef5ce.chunk.css.map",
-    "static/js/2.3c214f1a.chunk.js.LICENSE.txt": "/si7o/react-todo-list/static/js/2.3c214f1a.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/si7o/react-todo-list/static/media/logo.5d5d9eef.svg"
+    "main.css": "/react-todo-list/static/css/main.dfcef5ce.chunk.css",
+    "main.js": "/react-todo-list/static/js/main.a36689cd.chunk.js",
+    "main.js.map": "/react-todo-list/static/js/main.a36689cd.chunk.js.map",
+    "runtime-main.js": "/react-todo-list/static/js/runtime-main.28be1446.js",
+    "runtime-main.js.map": "/react-todo-list/static/js/runtime-main.28be1446.js.map",
+    "static/js/2.3c214f1a.chunk.js": "/react-todo-list/static/js/2.3c214f1a.chunk.js",
+    "static/js/2.3c214f1a.chunk.js.map": "/react-todo-list/static/js/2.3c214f1a.chunk.js.map",
+    "index.html": "/react-todo-list/index.html",
+    "precache-manifest.199779ace50f804a8b83527b6e26d27d.js": "/react-todo-list/precache-manifest.199779ace50f804a8b83527b6e26d27d.js",
+    "service-worker.js": "/react-todo-list/service-worker.js",
+    "static/css/main.dfcef5ce.chunk.css.map": "/react-todo-list/static/css/main.dfcef5ce.chunk.css.map",
+    "static/js/2.3c214f1a.chunk.js.LICENSE.txt": "/react-todo-list/static/js/2.3c214f1a.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/react-todo-list/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f677baaf.js",
+    "static/js/runtime-main.28be1446.js",
     "static/js/2.3c214f1a.chunk.js",
     "static/css/main.dfcef5ce.chunk.css",
-    "static/js/main.036db0f8.chunk.js"
+    "static/js/main.a36689cd.chunk.js"
   ]
 }
