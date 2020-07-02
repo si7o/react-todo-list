@@ -1,11 +1,15 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
-export default function TodoList() {
-    const todoList = Array.from(Array(10).keys())
+export default function TodoList({items, completeTodoHandler, removeTodoHandler}) {
 
-    const todoItemList = todoList.map((todo) => 
-        <TodoItem todo={todo}/>
+    const todoItemList = items.map((todo, index) => 
+        <TodoItem 
+            item={todo}
+            key={index}
+            index={index}
+            completeTodoHandler={completeTodoHandler} 
+            removeTodoHandler={removeTodoHandler} />
     )
 
     return (
