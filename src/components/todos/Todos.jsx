@@ -78,7 +78,7 @@ export default function Todos({logoImage}) {
             <TodoList 
                 items={todoItems} 
                 toggleTodoHandler={toggleTodo}
-                removeTodoHandler={removeTodo}/>       
+                removeTodoHandler={removeTodo}/>
         </div>
     )    
 }

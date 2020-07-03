@@ -5,6 +5,7 @@ import logo from './logo.svg'
 
 import Todos from './components/todos/Todos';
 import TodosContextProvider from './contexts/TodosContext';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <TodosContextProvider>
         <Todos logoImage={logo}/>
       </TodosContextProvider>
+      <Footer sourceCodeUrl="https://github.com/si7o/react-todo-list"/>
     </div>
   )
   
