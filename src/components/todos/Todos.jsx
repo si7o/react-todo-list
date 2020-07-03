@@ -12,21 +12,30 @@ export default function Todos({logoImage}) {
     const [todoItems, setTodoItems] = useState([])
     const [loadedItems, setLoadedItems] = useState(false)
 
+    // data load
+    // eslint-disable-next-line
+    function fetchTodoData(dataUrl) {        
+        if (!loadedItems) {
+            fetch(dataUrl)            
+                .then((r) => r.json())
+                .then((data) => {
+                    console.log('todo(s) loaded') 
+
+                    if (data) {
+                        const newTodoItems = todoItems.slice().concat(data)
+                        setTodoItems(newTodoItems)
+                    }
+                })
+                .catch((e)=> alert('ToDo(s) could not be loaded. Create yours...'))
+                .finally(()=> setLoadedItems(true))
+        }
+    }
+
     // fetch todos from file
     useEffect(() => {
         // delay the request so we can see the spinner :D
-        setTimeout( () => {
-            if (!loadedItems)
-                fetch(todoDataUrl)            
-                    .then((r) => r.json())
-                    .then((data) => {
-                        console.log('todo(s) loaded')
-                        
-                        setLoadedItems(true)
-                        setTodoItems(data)
-                    })
-        }, 1000)
-    })
+        setTimeout( () => fetchTodoData(todoDataUrl), 1200)
+    }, [loadedItems]) /* eslint-disable-line react-hooks/exhaustive-deps  */ // <---- OK???
 
     // event handlers
 
@@ -35,9 +44,9 @@ export default function Todos({logoImage}) {
         const todo = {
           text: todoText,
           done: false,
-    }
+        }
     
-    const newTodoItems = todoItems.slice().concat(todo)
+        const newTodoItems = todoItems.slice().concat(todo)
         
         setTodoItems(newTodoItems)    
     }
