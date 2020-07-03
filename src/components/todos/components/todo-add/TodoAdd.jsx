@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import {TodosContext} from '../../../../contexts/TodosContext'
 import './TodoAdd.scss'
 
-export default function TodoAdd({addTodoHandler}) {
+export default function TodoAdd() {
     const [todoText, setTodoText] = useState('')
+    const {addTodo} = useContext(TodosContext)
 
     const handleTodoTextChange = (event) => {
         setTodoText(event.target.value)
@@ -10,7 +12,7 @@ export default function TodoAdd({addTodoHandler}) {
 
     const submitTodo = (e) => {
         e.preventDefault()
-        addTodoHandler(todoText)
+        addTodo(todoText)
         setTodoText('')
     }
 
