@@ -2,6 +2,8 @@ li.todo-item {
     list-style-type: none;
     margin-top: 7px;
     padding-bottom: 3px;
+    background: #f3f3f3;
+    padding:10px;
 
     .text {
         line-height: 100%;
@@ -12,13 +14,13 @@ li.todo-item {
         border: 1px solid;
         background: none;
         font-size: larger;
-        font-weight: bolder;
         border-radius: 4px;
         margin: 0 5px;
 
         &.complete{
             content: '\2713';
-            color: #aaaaaa;    
+            color: #aaaaaa;
+            font-weight: bolder;  
             
             &:hover{
                 background-color: #c9f7aa;
@@ -27,12 +29,15 @@ li.todo-item {
     
         &.remove {
             content: '\1F5D1';
-            color:red;
+            color:#ad2800;
             float: right;
+            font-size: xx-large;
+            padding: 0;
+            border: none;
 
             &:hover{
                 
-                background-color: #f0c7bc;
+                color: red;
             }
         }
     }

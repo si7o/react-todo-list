@@ -2,8 +2,10 @@
     input {
         margin-right: 5px;
     }
-
-    button:disabled {
+    input[type="submit"]{
+        cursor: pointer;
+    }
+    input[type="submit"]:disabled {
         cursor: not-allowed;
     }
 }
