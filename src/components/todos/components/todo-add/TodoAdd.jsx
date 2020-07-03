@@ -1,35 +1,29 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import {TodosContext} from '../../../../contexts/TodosContext'
 import './TodoAdd.scss'
 
-export default function TodoAdd({addTodoHandler}) {
+export default function TodoAdd() {
     const [todoText, setTodoText] = useState('')
+    const {addTodo} = useContext(TodosContext)
 
-    function handleTodoTextChange(event) {
+    const handleTodoTextChange = (event) => {
         setTodoText(event.target.value)
-    }
+    }    
 
-    function handleKeyDown(e) {
-        if (e.key === 'Enter') {
-            addTodoClick()
-        }
-    } 
-
-    function addTodoClick() {
-        addTodoHandler(todoText)        
+    const submitTodo = (e) => {
+        e.preventDefault()
+        addTodo(todoText)
         setTodoText('')
     }
 
     return (
-        <div className="todo-add">
+        <form className="todo-add" onSubmit={submitTodo}>
             <input 
                 type="text"
                 placeholder="type todo text here" 
                 value={todoText} 
-                onChange={handleTodoTextChange}
-                onKeyPress={handleKeyDown}/>
-            <button onClick={addTodoClick} disabled={todoText.length===0}>
-                Add todo
-            </button>
-        </div>
+                onChange={handleTodoTextChange} />
+            <input type="submit" disabled={todoText.length===0} value="Add todo"/>
+        </form>
     )
 }

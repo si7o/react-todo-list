@@ -1,13 +1,10 @@
-import React, {useState, useEffect}  from 'react'
-
-import Header from '../header/Header'
-import TodoSummary from './components/todo-summary/TodoSummary'
-import TodoAdd from './components/todo-add/TodoAdd'
-import TodoList from './components/todo-list/TodoList'
+import React, { createContext, useState, useEffect } from 'react'
 
 const todoDataUrl = process.env.PUBLIC_URL + '/data/todos.json'
 
-export default function Todos({logoImage}) {
+export const TodosContext = createContext()
+
+function TodosContextProvider({children}) {
     // state
     const [todoItems, setTodoItems] = useState([])
     const [loadedItems, setLoadedItems] = useState(false)
@@ -41,44 +38,37 @@ export default function Todos({logoImage}) {
 
     const addTodo = (todoText) => {
         console.log(`add todo "${todoText}"`);
-        const todo = {
-          text: todoText,
-          done: false,
-        }
-    
-        const newTodoItems = todoItems.slice().concat(todo)
-        
-        setTodoItems(newTodoItems)    
+
+        setTodoItems([...todoItems,{ text: todoText, done: false}])        
     }
        
     const toggleTodo = (todoIndex) => {
         console.log(`toggle todo "${todoIndex}"`);
+        
         const newTodoItems = todoItems.slice()
-        todoItems[todoIndex].done= !todoItems[todoIndex].done
+        newTodoItems[todoIndex].done= !todoItems[todoIndex].done
     
         setTodoItems(newTodoItems)
     }
     
     const removeTodo = (todoText) => {
-        console.log(`remove todo "${todoText}"`);    
-        const newTodoItems = todoItems.filter((todo) => todo.text!==todoText)   
-        
-        setTodoItems(newTodoItems)
+        console.log(`remove todo "${todoText}"`);
+
+        setTodoItems(todoItems.filter((todo) => todo.text!==todoText))
     }
 
-    // component
-    return (        
-        <div className="todos">
-            <Header title="Todo list" logoImage={logoImage} isLoading={!loadedItems}/>                             
-            <TodoSummary 
-                todoList={todoItems} />
-            <TodoAdd 
-                todoList={todoItems} 
-                addTodoHandler={addTodo}/>
-            <TodoList 
-                items={todoItems} 
-                toggleTodoHandler={toggleTodo}
-                removeTodoHandler={removeTodo}/>
-        </div>
-    )    
+    return (
+        <TodosContext.Provider value={{
+            todoItems,
+            loadedItems,
+            addTodo,
+            toggleTodo,
+            removeTodo}}>
+            {children}
+        </TodosContext.Provider>
+    )
 }
+
+export default TodosContextProvider
+
+
