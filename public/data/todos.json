@@ -1,7 +1,19 @@
 [
     {
+        "text":"Use Redux", 
+        "done": false
+    },
+    {
+        "text":"Use react ContextAPI & Hooks", 
+        "done": false
+    },
+    {
       "text":"Use react ContextAPI", 
       "done": false
+    },
+    {
+      "text":"Basic ToDo list (state in parent component)", 
+      "done": true
     },
     {
       "text":"Have breakfast", 
