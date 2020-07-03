@@ -5,11 +5,11 @@
     },
     {
         "text":"Use react ContextAPI & Hooks", 
-        "done": false
+        "done": true
     },
     {
       "text":"Use react ContextAPI", 
-      "done": false
+      "done": true
     },
     {
       "text":"Basic ToDo list (state in parent component)", 
