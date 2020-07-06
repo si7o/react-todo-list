@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useReducer } from 'react'
-import { todosReducer } from '../reducers/TodosReducer'
-import { ADD_FETCHED_TODOS } from '../reducers/TodosActionTypes'
+import { todosReducer } from './TodosReducer'
+import { ADD_FETCHED_TODOS } from './TodosActionTypes'
 
 const todoDataUrl = process.env.PUBLIC_URL + '/data/todos.json'
 

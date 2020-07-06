@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
-import {TodosContext} from '../../../../contexts/TodosContext'
+import {TodosContext} from '../../context/TodosContext'
 import './TodoAdd.scss'
-import { ADD_TODO } from '../../../../reducers/TodosActionTypes'
+import { ADD_TODO } from '../../context/TodosActionTypes'
 
 export default function TodoAdd() {
     const [todoText, setTodoText] = useState('')

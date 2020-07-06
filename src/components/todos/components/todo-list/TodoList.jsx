@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import TodoItem from './TodoItem'
+import TodoItem from '../todo-item/TodoItem'
 
 import './TodoList.scss'
-import { TodosContext } from '../../../../contexts/TodosContext'
+import { TodosContext } from '../../context/TodosContext'
 
 export default function TodoList() {
 

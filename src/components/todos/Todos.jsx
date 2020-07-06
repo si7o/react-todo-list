@@ -4,7 +4,7 @@ import Header from '../header/Header'
 import TodoSummary from './components/todo-summary/TodoSummary'
 import TodoAdd from './components/todo-add/TodoAdd'
 import TodoList from './components/todo-list/TodoList'
-import { TodosContext } from '../../contexts/TodosContext'
+import { TodosContext } from './context/TodosContext'
 
 export default function Todos({logoImage}) {
     // state    

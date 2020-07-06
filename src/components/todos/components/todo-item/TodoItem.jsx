@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import './TodoItem.scss'
-import { TodosContext } from '../../../../contexts/TodosContext'
-import { TOGGLE_TODO_STATUS, REMOVE_TODO } from '../../../../reducers/TodosActionTypes'
+import { TodosContext } from '../../context/TodosContext'
+import { TOGGLE_TODO_STATUS, REMOVE_TODO } from '../../context/TodosActionTypes'
 
 export default function TodoItem({item, index}) {
 
