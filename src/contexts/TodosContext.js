@@ -1,4 +1,6 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useReducer } from 'react'
+import { todosReducer } from '../reducers/TodosReducer'
+import { ADD_FETCHED_TODOS } from '../reducers/TodosActionTypes'
 
 const todoDataUrl = process.env.PUBLIC_URL + '/data/todos.json'
 
@@ -6,25 +8,27 @@ export const TodosContext = createContext()
 
 function TodosContextProvider({children}) {
     // state
-    const [todoItems, setTodoItems] = useState([])
     const [loadedItems, setLoadedItems] = useState(false)
+    const [todoItems, todosDispatch] = useReducer(todosReducer, [])
+
 
     // data load
-    // eslint-disable-next-line
     const fetchTodoData = (dataUrl) => {        
         if (!loadedItems) {
             fetch(dataUrl)            
                 .then((r) => r.json())
-                .then((data) => {
+                .then((todos) => {
                     console.log('todo(s) loaded') 
 
-                    if (data) {
-                        const newTodoItems = todoItems.slice().concat(data)
-                        setTodoItems(newTodoItems)
+                    if (todos) {
+                        todosDispatch({type: ADD_FETCHED_TODOS, todos})
                     }
                 })
-                .catch((e)=> alert('ToDo(s) could not be loaded. Create yours...'))
-                .finally(()=> setLoadedItems(true))
+                .catch((e) => {
+                    console.log(e)
+                    alert('ToDo(s) could not be loaded. Create yours...')
+                })
+                .finally(() => setLoadedItems(true))
         }
     }
 
@@ -33,37 +37,12 @@ function TodosContextProvider({children}) {
         // delay the request so we can see the spinner :D
         setTimeout( () => fetchTodoData(todoDataUrl), 1200)
     }, [loadedItems]) /* eslint-disable-line react-hooks/exhaustive-deps  */ // <---- OK???
-
-    // event handlers
-
-    const addTodo = (todoText) => {
-        console.log(`add todo "${todoText}"`);
-
-        setTodoItems([...todoItems,{ text: todoText, done: false}])        
-    }
-       
-    const toggleTodo = (todoIndex) => {
-        console.log(`toggle todo "${todoIndex}"`);
-        
-        const newTodoItems = todoItems.slice()
-        newTodoItems[todoIndex].done= !todoItems[todoIndex].done
     
-        setTodoItems(newTodoItems)
-    }
-    
-    const removeTodo = (todoText) => {
-        console.log(`remove todo "${todoText}"`);
-
-        setTodoItems(todoItems.filter((todo) => todo.text!==todoText))
-    }
-
     return (
         <TodosContext.Provider value={{
             todoItems,
             loadedItems,
-            addTodo,
-            toggleTodo,
-            removeTodo}}>
+            todosDispatch}}>
             {children}
         </TodosContext.Provider>
     )
