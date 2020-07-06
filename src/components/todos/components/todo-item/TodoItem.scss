@@ -32,9 +32,10 @@ li.todo-item {
             color: #aaaaaa;
             font-weight: bolder;
             margin-right:0;
+            background-color: #e1e1e1;
             
             &:hover{
-                background-color: #b5e0b5;
+                color: green;
             }
         }
     
@@ -63,6 +64,10 @@ li.todo-item {
             background-color: green;
             color: white;         
             transition: all 0.3s linear;
+
+            &:hover {
+                color: #aaaaaa;
+            }
         }
     }
     
