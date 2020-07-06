@@ -4,6 +4,14 @@
         "done": false
     },
     {
+      "text":"Use Typescript", 
+      "done": false
+    },
+    {
+      "text":"Use reducer", 
+      "done": true
+    },
+    {
         "text":"Use react ContextAPI & Hooks", 
         "done": true
     },
