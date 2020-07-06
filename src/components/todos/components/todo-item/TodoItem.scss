@@ -1,0 +1,69 @@
+li.todo-item {
+    list-style-type: none;
+    margin-top: 7px;
+    padding-bottom: 3px;
+    padding:10px;
+
+    .text {
+        line-height: 100%;
+        text-align: center;
+        font-size: small;
+        background-color: #f1f1f1;
+        height: 30px;
+        position: relative;
+        display: inline-block;
+        width: 260px;
+        line-height: 35px;
+        text-align: left;
+        padding-left: 3px;
+        border-bottom: 5px solid #f1f1f1;
+        transition: all 0.1s ease-out;
+    }
+
+    button {
+        border:none;
+        background: none;
+        margin: 0px;
+        height: 35px;
+        width: 35px;
+        transition: all 0.1s ease-in;     
+
+        &.complete{
+            color: #aaaaaa;
+            font-weight: bolder;
+            margin-right:0;
+            
+            &:hover{
+                background-color: #b5e0b5;
+            }
+        }
+    
+        &.remove {
+            color:#ad2800;
+            padding: 0;
+            border: none;
+            transition: all 0.1s ease-out;
+
+            &:hover{
+                color:red;
+                text-shadow: 0 0 3px #ffffff;
+                transform: scale(1.5);
+            }
+        }
+    }
+
+    &.completed {     
+        span.text {
+            color: green;
+            text-decoration-line: line-through;
+            border-bottom: 4px solid green;
+        }
+        
+        button.complete {
+            background-color: green;
+            color: white;         
+            transition: all 0.3s linear;
+        }
+    }
+    
+}

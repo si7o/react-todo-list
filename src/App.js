@@ -4,7 +4,7 @@ import './App.css';
 import logo from './logo.svg'
 
 import Todos from './components/todos/Todos';
-import TodosContextProvider from './contexts/TodosContext';
+import TodosContextProvider from './components/todos/context/TodosContext';
 import Footer from './components/footer/Footer';
 
 function App() {

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './TodoSummary.scss'
-import { TodosContext } from '../../../../contexts/TodosContext';
+import { TodosContext } from '../../context/TodosContext';
 
 export default function TodoSummary() {
     const {todoItems} = useContext(TodosContext)

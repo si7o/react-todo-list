@@ -1,10 +1,11 @@
 import React, {useState, useContext} from 'react'
-import {TodosContext} from '../../../../contexts/TodosContext'
+import {TodosContext} from '../../context/TodosContext'
 import './TodoAdd.scss'
+import { ADD_TODO } from '../../context/TodosActionTypes'
 
 export default function TodoAdd() {
     const [todoText, setTodoText] = useState('')
-    const {addTodo} = useContext(TodosContext)
+    const {todosDispatch} = useContext(TodosContext)
 
     const handleTodoTextChange = (event) => {
         setTodoText(event.target.value)
@@ -12,7 +13,7 @@ export default function TodoAdd() {
 
     const submitTodo = (e) => {
         e.preventDefault()
-        addTodo(todoText)
+        todosDispatch({type: ADD_TODO, todoText})
         setTodoText('')
     }
 
