@@ -5,3 +5,6 @@ export const TOGGLE_TODO_STATUS = 'TOGGLE_TODO_STATUS'
 
 export const RESET_TODOS = 'RESET_TODOS'
 export const SET_ERROR = 'TODOS_ERROR'
+
+export const TODOS_TOGGLE_API = 'TODOS_TOGGLE_API'
+export const TODOS_SET_API_TYPE = 'TODOS_SET_API_TYPE'

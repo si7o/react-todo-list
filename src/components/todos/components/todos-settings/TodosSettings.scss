@@ -1,0 +1,32 @@
+.settings{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+    button {
+        background: none;
+        border: none;
+        font-size: 35px;
+        color: #f1f1f1;
+        transition: all 0.1s ease-out;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .settings-modal {
+        width: 200px;
+        background-color: #ededed;
+        position: absolute;
+        top: 50px;
+        right: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px #333333;
+        border: 1px solid #ffffff;
+
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+    }
+}

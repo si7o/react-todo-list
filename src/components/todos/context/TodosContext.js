@@ -3,7 +3,7 @@ import { todosReducer } from './TodosReducer'
 import { ADD_FETCHED_TODOS, SET_ERROR } from './TodosActionTypes'
 
 const localTodoDataUrl = process.env.PUBLIC_URL + '/data/todos.json'
-const todoDataUrl = 'https://todo-api-zeta.vercel.app/'
+const externalTodoDataUrl = 'https://todo-api-zeta.vercel.app/'
 
 export const TodosContext = createContext()
 
@@ -13,6 +13,7 @@ function TodosContextProvider({useLocalData = false, children}) {
         todoList: [],
         status: 0, // 0: loading, 1: success, -1: error,
         error: null,
+        useExternalApi: true,
     }
     
     const [todosStore, todosDispatch] = useReducer(todosReducer, initialState)
@@ -39,7 +40,7 @@ function TodosContextProvider({useLocalData = false, children}) {
 
     // fetch todos from file
     useEffect(() => {
-        const dataUrl = useLocalData ? localTodoDataUrl: todoDataUrl
+        const dataUrl = todosStore.useExternalApi ? externalTodoDataUrl: localTodoDataUrl
  
         // delay the request so we can see the spinner :D
         setTimeout( () => fetchTodoData(dataUrl), 500)
