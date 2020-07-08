@@ -8,7 +8,7 @@ export const todosReducer = (state, action) => {
             return {
                 ...state,
                 todoList: [...state.todoList,...action.todos],
-                status: 1,
+                status: 1, // success
             }
 
         case ADD_TODO:
@@ -16,15 +16,22 @@ export const todosReducer = (state, action) => {
 
             return {
                 ...state,
-                todoList: [...state.todoList,{ text: action.todoText, done: false}],
+                todoList: [
+                    ...state.todoList,
+                    { 
+                        id: Math.random().toString(36),
+                        name: action.todoText,
+                        complete: false
+                    }
+                ],
             }
 
         case REMOVE_TODO:
-            console.log(`reducer: remove todo "${action.todoText}"`)
+            console.log(`reducer: remove todo "${action.id}"`)
 
             return {
                 ...state,
-                todoList: state.todoList.filter((todo) => todo.text!==action.todoText),
+                todoList: state.todoList.filter((todo) => todo.id!==action.id),
             }
 
         case TOGGLE_TODO_STATUS:            
@@ -33,8 +40,8 @@ export const todosReducer = (state, action) => {
             return {
                 ...state,
                 todoList: state.todoList.map((todo)=> {
-                    if (todo.text === action.todoText) {
-                        return {text: todo.text, done: !todo.done}
+                    if (todo.id === action.id) {
+                        return {...todo, complete: !todo.complete}
                     }
                     return todo
                 }),
@@ -45,7 +52,7 @@ export const todosReducer = (state, action) => {
 
             return {
                 ...state,
-                status: 0
+                status: 0, //loading
             }        
 
         case SET_ERROR:
@@ -54,8 +61,8 @@ export const todosReducer = (state, action) => {
             
             return {
                 ...state,
-                status: -1,
-                error: action.error
+                status: -1, //error
+                error: action.error,
             }
             
         default:

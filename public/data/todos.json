@@ -1,30 +1,37 @@
 [
     {
-        "text":"Use Redux", 
-        "done": false
+      "id": "1",
+      "name":"Use Redux", 
+      "complete": false
     },
     {
-      "text":"Use Typescript", 
-      "done": false
+      "id": "2",
+      "name":"Use Typescript", 
+      "complete": false
     },
     {
-      "text":"Use reducer", 
-      "done": true
+      "id": "3",
+      "name":"Use reducer", 
+      "complete": true
     },
     {
-        "text":"Use react ContextAPI & Hooks", 
-        "done": true
+      "id": "4",
+      "name":"Use react ContextAPI & Hooks", 
+      "complete": true
     },
     {
-      "text":"Use react ContextAPI", 
-      "done": true
+      "id": "5",
+      "name":"Use react ContextAPI", 
+      "complete": true
     },
     {
-      "text":"Basic ToDo list (state in parent component)", 
-      "done": true
+      "id": "6",
+      "name":"Basic ToDo list (state in parent component)", 
+      "complete": true
     },
     {
-      "text":"Have breakfast", 
-      "done": true
+      "id": "7",
+      "name":"Have breakfast", 
+      "complete": true
     }
 ]

@@ -8,11 +8,10 @@ export default function TodoList() {
 
     const {todosStore} = useContext(TodosContext)
 
-    const todoItemList = todosStore?.todoList?.map((todo, index) => 
+    const todoItemList = todosStore?.todoList?.map((todo) => 
         <TodoItem 
             item={todo}
-            key={index}
-            index={index} />
+            key={todo.id} />
     )
 
     if (todosStore.status === 0) 
