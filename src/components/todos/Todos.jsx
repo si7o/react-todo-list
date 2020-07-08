@@ -8,12 +8,12 @@ import { TodosContext } from './context/TodosContext'
 
 export default function Todos({logoImage}) {
     // state    
-    const {loadedItems} = useContext(TodosContext)    
+    const {todosStore} = useContext(TodosContext)    
 
     // component
     return (        
         <div className="todos">
-            <Header title="Todo list" logoImage={logoImage} isLoading={!loadedItems}/>                             
+            <Header title="Todo list" logoImage={logoImage} isLoading={todosStore.status === 0}/>                             
             <TodoSummary />
             <TodoAdd />
             <TodoList />
