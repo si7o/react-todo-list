@@ -1,4 +1,4 @@
-import { ADD_FETCHED_TODOS, ADD_TODO, REMOVE_TODO, TOGGLE_TODO_STATUS, SET_LOADING, SET_ERROR } from "./TodosActionTypes"
+import { ADD_FETCHED_TODOS, ADD_TODO, REMOVE_TODO, TOGGLE_TODO_STATUS, RESET_TODOS ,SET_ERROR } from "./TodosActionTypes"
 
 export const todosReducer = (state, action) => {
     switch(action.type) {
@@ -47,11 +47,13 @@ export const todosReducer = (state, action) => {
                 }),
             }
 
-        case SET_LOADING:
+        case RESET_TODOS:
             console.log(`reducer: change status to Loading`)
 
             return {
                 ...state,
+                error: null,
+                todoList: [],
                 status: 0, //loading
             }        
 

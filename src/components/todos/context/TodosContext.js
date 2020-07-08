@@ -2,15 +2,17 @@ import React, { createContext, useEffect, useReducer } from 'react'
 import { todosReducer } from './TodosReducer'
 import { ADD_FETCHED_TODOS, SET_ERROR } from './TodosActionTypes'
 
-const todoDataUrl = process.env.PUBLIC_URL + '/data/todos.json'
+const localTodoDataUrl = process.env.PUBLIC_URL + '/data/todos.json'
+const todoDataUrl = 'https://todo-api-zeta.vercel.app/'
 
 export const TodosContext = createContext()
 
-function TodosContextProvider({children}) {
+function TodosContextProvider({useLocalData = false, children}) {
     // state
     const initialState = {
         todoList: [],
-        status: 0, // 0: loading, 1: success, -1: error
+        status: 0, // 0: loading, 1: success, -1: error,
+        error: null,
     }
     
     const [todosStore, todosDispatch] = useReducer(todosReducer, initialState)
@@ -20,25 +22,28 @@ function TodosContextProvider({children}) {
         if (todosStore.status === 0) {
             fetch(dataUrl)            
                 .then((r) => r.json())
-                .then((todos) => {
-                    console.log('todo(s) loaded') 
+                .then(
+                    (todos) => {
+                        console.log('todo(s) loaded') 
 
-                    if (todos) {
-                        todosDispatch({type: ADD_FETCHED_TODOS, todos})
-                    }
-                })
-                .catch((error) => {
-                    alert('ToDo(s) could not be loaded. Create yours...')
-                    todosDispatch({type: SET_ERROR, error})
-                })
+                        if (todos) {
+                            todosDispatch({type: ADD_FETCHED_TODOS, todos})
+                        }
+                    }, 
+                    (error) => todosDispatch({type: SET_ERROR, error})
+                )
+                .catch((error) => todosDispatch({type: SET_ERROR, error})
+                )
         }
     }
 
     // fetch todos from file
     useEffect(() => {
+        const dataUrl = useLocalData ? localTodoDataUrl: todoDataUrl
+ 
         // delay the request so we can see the spinner :D
-        setTimeout( () => fetchTodoData(todoDataUrl), 1200)
-    }, []) /* eslint-disable-line react-hooks/exhaustive-deps  */ // <---- OK???
+        setTimeout( () => fetchTodoData(dataUrl), 500)
+    }, [todosStore.status]) /* eslint-disable-line react-hooks/exhaustive-deps  */ // <---- OK???
     
     return (
         <TodosContext.Provider value={{

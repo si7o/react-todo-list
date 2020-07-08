@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import './TodoSummary.scss'
 import { TodosContext } from '../../context/TodosContext';
+import { RESET_TODOS } from '../../context/TodosActionTypes';
 
 export default function TodoSummary() {
-    const {todoItems} = useContext(TodosContext)
+    const {todosStore} = useContext(TodosContext)
 
-    const pendigTodos = todoItems?.filter((todo) => todo.done === false).length;
-    const doneTodos = todoItems?.filter((todo) => todo.done === true).length;
+    const pendigTodos = todosStore.todoList?.filter((todo) => todo.complete === false).length;
+    const doneTodos = todosStore.todoList?.filter((todo) => todo.complete === true).length;
 
     return (
         <div className="todo-summary">
