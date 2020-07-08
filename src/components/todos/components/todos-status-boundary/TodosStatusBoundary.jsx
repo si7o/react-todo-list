@@ -7,25 +7,25 @@ export default function TodosStatusBoundary({children}) {
     const {todosStore, todosDispatch} = useContext(TodosContext)
 
     switch (todosStore.status) {
-        case 0:
+        case 0: //loading
             return (
-            <div className="todo-list skeleton">
-                <ul>
-                    <li className="todo-item"><span className="text"> </span></li>
-                    <li className="todo-item"><span className="text"> </span></li>
-                    <li className="todo-item"><span className="text"> </span></li>
-                </ul>
-            </div>
+                <div className="todo-list skeleton">
+                    <ul>
+                        <li className="todo-item"><span className="text"> </span></li>
+                        <li className="todo-item"><span className="text"> </span></li>
+                        <li className="todo-item"><span className="text"> </span></li>
+                    </ul>
+                </div>
             ) 
 
-        case 1:
+        case 1: //success
             return (
                 <div>
                     {children}
                 </div>
             )
 
-        case -1:
+        case -1: //error
             return (
                 <div className="error">
                     <p className="warning">
@@ -35,7 +35,7 @@ export default function TodosStatusBoundary({children}) {
                 </div>
             )
 
-        default:            
+        default:
             return (
                 <div className="error">
                     <p className="warning">

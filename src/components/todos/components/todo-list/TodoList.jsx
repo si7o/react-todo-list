@@ -9,25 +9,21 @@ export default function TodoList() {
 
     const {todosStore, todosDispatch} = useContext(TodosContext)
 
-    const todoItemList = todosStore?.todoList?.map((todo) => 
-        <TodoItem 
-            item={todo}
-            key={todo.id} />
+    const todoItemList = todosStore?.todoList?.length ?(
+        <ul> {todosStore.todoList.map((todo) => 
+            <TodoItem 
+                item={todo}
+                key={todo.id} />
+            )}
+        </ul>
+    ) : ( 
+        <p>No ToDo(s) yet. Add them!</p>
     )
     
-    if (!todosStore?.todoList?.length)
-        return (
-            <div className="todo-list">
-                No ToDo(s) yet. Add them!
-            </div>
-        )
-    else 
-        return (
-            <div className="todo-list">
-                <ul>
-                    {todoItemList}
-                </ul>
-                <button onClick={() => todosDispatch({type: RESET_TODOS})}>Reset</button>
-            </div>
-        )
+    return (
+        <div className="todo-list">
+            {todoItemList}
+            <button onClick={() => todosDispatch({type: RESET_TODOS})}>Reset</button>
+        </div>            
+    ) 
 }
